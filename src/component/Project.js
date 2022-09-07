@@ -2,6 +2,7 @@ function Project() {
     return (
       <div className="Project">
         <h2>Projects</h2>
+        <br/>
         <a href="https://blooming-lowlands-18871.herokuapp.com/">Restaurant Reviews</a>
       </div>
     );
