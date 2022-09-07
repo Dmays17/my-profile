@@ -7,6 +7,11 @@
   text-align: left;
   color:#001f3d
 }
+
+.Title a{
+  color:#001f3d
+}
+
 .Project a{
   text-decoration:none ;
   color: #a8e8ca;
@@ -44,8 +49,12 @@
     text-decoration: none;
     color:#001f3d
   }
+
+  a{
+    color: #001f3d;
+  }
+  
   body{
     background-color: #a8e8ca ;
     margin-left: 1em
   }
-  
