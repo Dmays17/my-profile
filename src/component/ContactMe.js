@@ -33,7 +33,7 @@ const handleChange=(e)=>{
 const handleClick = (e) => {
   e.preventDefault()
   axios
-  .post("https://dprofile-api.herokuapp.com/",contact)
+  .post("https://dprofile-api.herokuapp.com/create",contact)
    .then((res)=>console.log(res))
    .catch((err)=> console.log(err))
 }
