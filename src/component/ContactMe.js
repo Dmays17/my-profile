@@ -1,3 +1,6 @@
+import { useNavigate } from 'react-router-dom';
+import {useState} from "react"
+import axios from "axios"
 import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col';
 import Form from "react-bootstrap/Form"
@@ -5,6 +8,39 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row"
 
 function ContactMe() {
+
+  const navigate=useNavigate();
+  const [contact,setContact]=useState({
+    firstname:"",
+    lastname:"",
+    company:"",
+    email:"",
+    phonenumber:""
+  })
+
+
+const handleChange=(e)=>{
+  const {name,value}=e.target;
+
+  setContact((prev)=>{
+    return({
+      ...prev,
+      [name]:value,
+    })
+  })
+}
+
+const handleClick = (e) => {
+  e.preventDefault()
+  axios
+  .post("http://localhost:5002/create",contact)
+   .then((res)=>console.log(res))
+   .catch((err)=> console.log(err))
+}
+// useEffect(()=>{
+//   console.log(contact)
+// },[contact])
+
     return (
       <div className="Title">
         <Row className="justify-content-center">
@@ -15,33 +51,33 @@ function ContactMe() {
       <Form.Group as={Col} controlId="formBasicEmail">
         <Form.Label>First Name</Form.Label>
         
-        <Form.Control type="firstname" placeholder="Enter first name" />
+        <Form.Control type="firstname" name="firstname" value={contact.firstname} placeholder="Enter first name" onChange={handleChange}/>
         
       </Form.Group>
   
       <Form.Group as={Col} controlId="formBasicEmail">
         <Form.Label>Last Name</Form.Label>
         
-        <Form.Control type="lastname" placeholder="Enter last name" />
+        <Form.Control type="lastname" name="lastname" value={contact.lastname} placeholder="Enter last name" onChange={handleChange}/>
         
       </Form.Group>
       </Row>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Company Name</Form.Label>
-        <Form.Control type="company" placeholder="Enter company name" />
+        <Form.Control type="company" name="company" value={contact.company} placeholder="Enter company name" onChange={handleChange}/>
       </Form.Group>
       <Row className="mb-3">
       <Form.Group as={Col} controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
+        <Form.Control type="email" name="email" value={contact.email} placeholder="Enter email" onChange={handleChange}/>
       </Form.Group>
 
       <Form.Group as={Col} controlId="formBasicPassword">
         <Form.Label>Phone Number</Form.Label>
-        <Form.Control type="Number" placeholder="Phone Number" />
+        <Form.Control type="Number" name="phonenumber" value={contact.phonenumber} placeholder="Phone Number" onChange={handleChange}/>
       </Form.Group>
       </Row>
-      <Button variant="primary" type="submit">
+      <Button onClick={handleClick} variant="primary" type="submit">
         Submit
       </Button>
     </Form>

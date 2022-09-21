@@ -4,6 +4,7 @@ import Project from './component/Project';
 import AboutMe from './component/AboutMe';
 import ContactMe from './component/ContactMe';
 import './App.css'
+
 function App() {
   return (
     <div className="App">
@@ -11,6 +12,7 @@ function App() {
       <Router>
       <header>
       <div className='NavBar'>
+        
             <ul>
                 <li>
                    <Link to="/" >Home</Link> 
@@ -25,6 +27,7 @@ function App() {
                     <Link to="/ContactMe" >Contact Me</Link>  
                 </li>
             </ul>
+            
         </div>
         </header>
 
