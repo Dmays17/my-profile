@@ -1,8 +1,10 @@
-import {BrowserRouter as Router,Link,Routes,Route}from 'react-router-dom'
+import {BrowserRouter as Router,Link,Routes,Route, Navigate}from 'react-router-dom'
 import Home from './component/Home';
 import Project from './component/Project';
 import AboutMe from './component/AboutMe';
 import ContactMe from './component/ContactMe';
+import ThankYou from './component/ThankYou';
+
 import './App.css'
 
 function App() {
@@ -26,6 +28,7 @@ function App() {
                 <li>
                     <Link to="/ContactMe" >Contact Me</Link>  
                 </li>
+                
             </ul>
             
         </div>
@@ -37,6 +40,7 @@ function App() {
           <Route path="/Project"element={<Project/>}/>
           <Route path="/AboutMe"element={<AboutMe/>}/>
           <Route path="/ContactMe"element={<ContactMe/>}/>
+          <Route path="/ThankYou"element={<ThankYou/>}/>
         </Routes>
       </div>
 

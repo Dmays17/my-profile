@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+
 import {useState} from "react"
 import axios from "axios"
 import Card from 'react-bootstrap/Card'
@@ -6,10 +6,12 @@ import Col from 'react-bootstrap/Col';
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row"
+import React from "react";
+
 
 function ContactMe() {
 
-  const navigate=useNavigate();
+ 
   const [contact,setContact]=useState({
     firstname:"",
     lastname:"",
@@ -28,15 +30,22 @@ const handleChange=(e)=>{
       [name]:value,
     })
   })
+   
 }
 
+
 const handleClick = (e) => {
-  e.preventDefault()
+  e.preventDefault()  
+
   axios
   .post("https://dprofile-api.herokuapp.com/create",contact)
    .then((res)=>console.log(res))
    .catch((err)=> console.log(err))
-}
+
+   
+   
+  };
+
 // useEffect(()=>{
 //   console.log(contact)
 // },[contact])
@@ -77,9 +86,12 @@ const handleClick = (e) => {
         <Form.Control type="Number" name="phonenumber" value={contact.phonenumber} placeholder="Phone Number" onChange={handleChange}/>
       </Form.Group>
       </Row>
+
       <Button onClick={handleClick} variant="primary" type="submit">
         Submit
-      </Button>
+      </Button> 
+      
+
     </Form>
     </Card>
     </Row>
