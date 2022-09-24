@@ -6,12 +6,13 @@ import Col from 'react-bootstrap/Col';
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row"
+import {useNavigate} from "react-router-dom"
 import React from "react";
 
 
 function ContactMe() {
 
- 
+  const[goToContact,setGoToContact]= useState(false)
   const [contact,setContact]=useState({
     firstname:"",
     lastname:"",
@@ -19,7 +20,7 @@ function ContactMe() {
     email:"",
     phonenumber:""
   })
-
+const navigate=useNavigate()
 
 const handleChange=(e)=>{
   const {name,value}=e.target;
@@ -33,10 +34,15 @@ const handleChange=(e)=>{
    
 }
 
+console.log('about to try if heere is state', goToContact)
+if(goToContact){
+  navigate("/ThankYou")
+  
+}
 
 const handleClick = (e) => {
   e.preventDefault()  
-
+  setGoToContact(true)
   axios
   .post("https://dprofile-api.herokuapp.com/create",contact)
    .then((res)=>console.log(res))
