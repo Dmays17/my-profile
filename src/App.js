@@ -43,11 +43,6 @@ function App() {
           <Route path="/ThankYou"element={<ThankYou/>}/>
         </Routes>
       </div>
-
-
-
-
-
         </Router>
     </div>
   );
